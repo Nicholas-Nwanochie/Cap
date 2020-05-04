@@ -1,0 +1,50 @@
+<!-- one way binding -->
+
+<!-- <h1>geeew</h1>
+<textarea rows = "6" [value]="newPost" #postInput></textarea>
+<!-- #postInput = parameter used to make new post -->
+<!-- <hr>
+<button (click)="onAddPost(postInput)" >save </button>
+<p>{{newPost}}</p>///default post --> -->
+
+
+<!-- two way binding -->
+
+<!-- ngModel listens and stores user input// need to add formsmodule in app.module -->
+<mat-card>
+  <form (submit)="onAddPost(postForm)" #postForm="ngForm" >
+<mat-form-field>
+  <input
+  matInput
+  type="text"
+  name='title'
+  ngModel
+  placeholder="Title"
+  required
+  #title="ngModel">
+  <mat-error *ngIf="title.invalid"> Please enter an appropriate item name </mat-error>
+</mat-form-field>
+<mat-form-field>
+  <h1></h1>
+  <textarea
+  matInput rows="6"
+  name="content"
+  ngModel
+  placeholder="Content"
+  required
+  #content="ngModel"
+  >
+</textarea>
+    <mat-error *ngIf="content.invalid"> Please enter an appropriate item name </mat-error>
+
+  <!-- #postInput = parameter used to make new post -->
+</mat-form-field>
+<button mat-raised-button
+color="primary"
+
+type="submit"
+>save </button>
+  </form>
+<!-- (click)="onAddPost()" -->
+</mat-card>
+<!-- <p>{{newPost}}</p>///default post -->
